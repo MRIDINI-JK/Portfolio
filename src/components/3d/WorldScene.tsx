@@ -107,8 +107,11 @@ function CoreForm({ section }: SceneProps) {
     const px = (state.pointer.x * viewport.width) / 28;
     const py = (state.pointer.y * viewport.height) / 28;
     // Sits to the right of the copy so it never competes with the headline.
-    const baseX = viewport.width > 9 ? 3.4 : 0;
-    const baseY = viewport.width > 9 ? 0 : 1.2;
+    const wide = viewport.width / viewport.height > 1.1;
+    const baseX = wide ? viewport.width * 0.26 : 0;
+    const baseY = wide ? 0 : viewport.height * 0.14;
+    const scale = wide ? 0.62 : 0.5;
+    group.current.scale.lerp(new THREE.Vector3(scale, scale, scale), 0.05);
     group.current.position.x += (baseX + px - group.current.position.x) * 0.04;
     group.current.position.y += (baseY + py - group.current.position.y) * 0.04;
 
