@@ -32,7 +32,7 @@ export function WorldCanvas({ section }: { section: SectionId }) {
       <div
         className={cn(
           "absolute inset-0 transition-opacity duration-700",
-          section === "home" ? "opacity-100" : "opacity-25",
+          section === "home" ? "opacity-100" : "opacity-[0.12]",
         )}
       >
       {supported && ready ? (
