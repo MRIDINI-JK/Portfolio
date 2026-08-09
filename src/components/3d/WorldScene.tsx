@@ -70,7 +70,7 @@ function ParticleField({ count, spread }: { count: number; spread: number }) {
   );
 }
 
-const GEOMETRIES = [
+const GEOMETRIES: THREE.BufferGeometry[] = [
   new THREE.IcosahedronGeometry(2.1, 1),
   new THREE.OctahedronGeometry(2.1, 1),
   new THREE.TorusKnotGeometry(1.4, 0.36, 90, 12),
@@ -119,7 +119,7 @@ function CoreForm({ section }: SceneProps) {
 
   return (
     <group ref={group}>
-      <mesh ref={mesh} geometry={GEOMETRIES[cfg.geometry]} material={material} />
+      <mesh ref={mesh} geometry={GEOMETRIES[cfg.geometry] ?? GEOMETRIES[0]!} material={material} />
     </group>
   );
 }
