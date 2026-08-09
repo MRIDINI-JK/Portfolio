@@ -1,6 +1,7 @@
 import { ClientOnly } from "@tanstack/react-router";
 import { Suspense, lazy, useEffect, useState } from "react";
 import type { SectionId } from "@/lib/portfolio";
+import { cn } from "@/lib/utils";
 
 const WorldScene = lazy(() => import("./WorldScene"));
 
@@ -28,6 +29,12 @@ export function WorldCanvas({ section }: { section: SectionId }) {
     <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
       <div className="absolute inset-0 grid-bg opacity-60" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,color-mix(in_oklab,var(--primary)_14%,transparent),transparent_70%)]" />
+      <div
+        className={cn(
+          "absolute inset-0 transition-opacity duration-700",
+          section === "home" ? "opacity-100" : "opacity-25",
+        )}
+      >
       {supported && ready ? (
         <ClientOnly fallback={null}>
           <Suspense fallback={null}>
@@ -35,6 +42,7 @@ export function WorldCanvas({ section }: { section: SectionId }) {
           </Suspense>
         </ClientOnly>
       ) : null}
+      </div>
     </div>
   );
 }
