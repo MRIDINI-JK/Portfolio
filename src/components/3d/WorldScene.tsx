@@ -62,7 +62,7 @@ function ParticleField({ count, spread }: { count: number; spread: number }) {
         size={0.035}
         sizeAttenuation
         transparent
-        opacity={0.55}
+        opacity={0.4}
         color="#7fe7e0"
         depthWrite={false}
       />
@@ -93,7 +93,7 @@ function CoreForm({ section }: SceneProps) {
       new THREE.MeshBasicMaterial({
         wireframe: true,
         transparent: true,
-        opacity: 0.42,
+        opacity: 0.22,
         color: new THREE.Color().setHSL(cfg.hue, 0.7, 0.6),
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -106,8 +106,11 @@ function CoreForm({ section }: SceneProps) {
     // Cursor parallax — position only, so it never competes with the copy.
     const px = (state.pointer.x * viewport.width) / 28;
     const py = (state.pointer.y * viewport.height) / 28;
-    group.current.position.x += (px - group.current.position.x) * 0.04;
-    group.current.position.y += (py - group.current.position.y) * 0.04;
+    // Sits to the right of the copy so it never competes with the headline.
+    const baseX = viewport.width > 9 ? 3.4 : 0;
+    const baseY = viewport.width > 9 ? 0 : 1.2;
+    group.current.position.x += (baseX + px - group.current.position.x) * 0.04;
+    group.current.position.y += (baseY + py - group.current.position.y) * 0.04;
 
     const target = new THREE.Color().setHSL(cfg.hue, 0.7, 0.6);
     material.color.lerp(target, 0.04);
@@ -130,7 +133,7 @@ export default function WorldScene({ section }: SceneProps) {
   return (
     <Canvas
       dpr={dpr}
-      camera={{ position: [0, 0, 9], fov: 50 }}
+      camera={{ position: [0, 0, 13], fov: 50 }}
       gl={{ antialias: false, powerPreference: "high-performance" }}
       aria-hidden="true"
     >
