@@ -43,7 +43,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: () => void
 
   return (
     <motion.article
-      whileHover={reduced ? undefined : { y: -6, rotateX: 2, rotateY: -2 }}
+      {...(reduced ? {} : { whileHover: { y: -6, rotateX: 2, rotateY: -2 } })}
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
       style={{ transformPerspective: 900 }}
       className="card-glow group relative flex h-full flex-col rounded-2xl border border-border bg-surface/60 p-6 md:p-8"
