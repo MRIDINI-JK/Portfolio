@@ -70,9 +70,9 @@ export const SECTIONS: Section[] = [
 export const portfolio = {
   identity: {
     /** Fill these in — everything else keys off them. */
-    name: null as string | null,
-    initials: null as string | null,
-    location: null as string | null,
+    name: "MRIDINI" as string | null,
+    initials: "M" as string | null,
+    location: "India" as string | null,
     status: "Open to Opportunities",
   },
 
@@ -386,7 +386,7 @@ export const portfolio = {
   resume: {
     heading: "Want the complete picture?",
     body: "Download my resume for a detailed overview of my experience, projects and technical skills.",
-    url: null as string | null,
+    url: "https://drive.google.com/file/d/1eU9ixOfO_KYObCPKfL5TdutfhAubNueK/view?usp=sharing" as string | null,
   },
 
   contact: {

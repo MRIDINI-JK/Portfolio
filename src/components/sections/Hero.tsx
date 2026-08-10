@@ -70,7 +70,7 @@ export function Hero() {
 
             {resume.url ? (
               <a
-                href={resume.url}
+                href={"https://drive.google.com/file/d/1eU9ixOfO_KYObCPKfL5TdutfhAubNueK/view?usp=sharing"}
                 download
                 className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-6 py-3 font-medium text-foreground transition-colors hover:bg-surface"
               >
